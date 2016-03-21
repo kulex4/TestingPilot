@@ -6,7 +6,6 @@
 	<groupId>com.itrex</groupId>
 	<artifactId>pilot</artifactId>
 	<version>0.0.1</version>
-	<packaging>jar</packaging>
 
 	<name>PilotProject</name>
 	<description>Java Testing Pilot Project</description>
@@ -48,11 +47,73 @@
 	</dependencies>
 	
 	<build>
+        <finalName>vitaliy.likhadzed</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.itrex.PilotProjectApplication</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Built-By>ITRexGroup</Built-By>
+                            <Class-Path>./conf/</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <excludes>
+                        <exclude>application.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                   <!-- <execution>
+                        <id>jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.itrex.PilotProjectApplication</mainClass>
+                                </manifest>
+                                <manifestEntries>
+                                    <Built-By>ITRexGroup</Built-By>
+                                    <Class-Path>./conf/</Class-Path>
+                                </manifestEntries>
+                            </archive>
+                           &lt;!&ndash; <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>&ndash;&gt;
+                           &lt;!&ndash; <appendAssemblyId>false</appendAssemblyId>&ndash;&gt;
+                        </configuration>
+                    </execution>-->
+
+                    <execution>
+                        <id>dist</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/assembly/assembly.xml</descriptor>
+                            </descriptors>
+                            <finalName>vitaliy.likhadzed</finalName>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
