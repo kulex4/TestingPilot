@@ -1,0 +1,19 @@
+Installation instructions:
+
+1. Create schema in MySQL named 'pilot' with default parameters, and set it as default schema;
+
+2. Import SQL script file 'pilot-tables' from zip-archive in MySQL;
+
+3. To build a JavaPilotProject, open your console, change to your project folder where pom.xml file is placed,
+and issue this command: 'mvn clean install';
+
+4. Then change to target folder in project folder and issue:
+java -jar Nikolai.jar "D:\pilot\ActualOutput\even_info.csv" "D:\pilot\ActualOutput\event_by_day.csv" "D:\pilot\ExpectedOutput\even_info_expected.csv" "D:\pilot\ExpectedOutput\event_by_day_expected.csv"
+This command will run already build jar application with 4 parameters. Each parameter means path to csv file.
+Filename is very important: 
+EventByDay object must contains 'by_day' string in name, 
+all files with expected output must contains 'expected', 
+and EventInfo objects must contains in filename string 'info';
+
+5. After the execution of the application you will see in working folder new txt file with name 'Result.txt',
+with summary report;

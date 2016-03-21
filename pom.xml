@@ -4,8 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.itrex</groupId>
-	<artifactId>pilot</artifactId>
-	<version>0.0.1</version>
+	<artifactId>Nikolai</artifactId>
 	<packaging>jar</packaging>
 
 	<name>PilotProject</name>
@@ -48,6 +47,7 @@
 	</dependencies>
 	
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
