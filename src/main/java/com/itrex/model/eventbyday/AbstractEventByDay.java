@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
  * Author: nikolai.pashkevich.
  */
 @MappedSuperclass
-public class AbstractEventByDay implements NotEqualsString<AbstractEventInfo> {
+public class AbstractEventByDay implements NotEqualsString<AbstractEventByDay> {
 
     @Id
     @Column(name = "dy_id")
@@ -303,7 +303,59 @@ public class AbstractEventByDay implements NotEqualsString<AbstractEventInfo> {
     }
 
     @Override
-    public String getNotEqualsString(AbstractEventInfo obj) {
-        return null;
+    public String getNotEqualsString(AbstractEventByDay that) {
+        StringBuilder ret = new StringBuilder();
+        if (TimeBtwFstLstEventOfDay != null ? !TimeBtwFstLstEventOfDay.equals(that.TimeBtwFstLstEventOfDay) : that.TimeBtwFstLstEventOfDay != null) {
+            ret.append("TimeBtwFstLstEventOfDay ").append(TimeBtwFstLstEventOfDay).append(" != ").append(that.TimeBtwFstLstEventOfDay).append(" ");
+        }
+        if (TSL_EventOfDay != null ? !TSL_EventOfDay.equals(that.TSL_EventOfDay) : that.TSL_EventOfDay != null) {
+            ret.append("TSL_EventOfDay ").append(TSL_EventOfDay).append(" != ").append(that.TSL_EventOfDay).append(" ");
+        }
+        if (TSF_EventOfDay != null ? !TSF_EventOfDay.equals(that.TSF_EventOfDay) : that.TSF_EventOfDay != null) {
+            ret.append("TSF_EventOfDay ").append(TSF_EventOfDay).append(" != ").append(that.TSF_EventOfDay).append(" ");
+        }
+        if (AvgDistBtwPlEventsInDay != null ? !AvgDistBtwPlEventsInDay.equals(that.AvgDistBtwPlEventsInDay) : that.AvgDistBtwPlEventsInDay != null) {
+            ret.append("AvgDistBtwPlEventsInDay ").append(AvgDistBtwPlEventsInDay).append(" != ").append(that.AvgDistBtwPlEventsInDay).append(" ");
+        }
+        if (MaxDistBtwPlEventsInDay != null ? !MaxDistBtwPlEventsInDay.equals(that.MaxDistBtwPlEventsInDay) : that.MaxDistBtwPlEventsInDay != null) {
+            ret.append("MaxDistBtwPlEventsInDay ").append(MaxDistBtwPlEventsInDay).append(" != ").append(that.MaxDistBtwPlEventsInDay).append(" ");
+        }
+        if (MinDistBtwPlEventsInDay != null ? !MinDistBtwPlEventsInDay.equals(that.MinDistBtwPlEventsInDay) : that.MinDistBtwPlEventsInDay != null) {
+            ret.append("MinDistBtwPlEventsInDay ").append(MinDistBtwPlEventsInDay).append(" != ").append(that.MinDistBtwPlEventsInDay).append(" ");
+        }
+        if (AvgDistBtwPl_X_EventsInDay != null ? !AvgDistBtwPl_X_EventsInDay.equals(that.AvgDistBtwPl_X_EventsInDay) : that.AvgDistBtwPl_X_EventsInDay != null) {
+            ret.append("AvgDistBtwPl_X_EventsInDay ").append(AvgDistBtwPl_X_EventsInDay).append(" != ").append(that.AvgDistBtwPl_X_EventsInDay).append(" ");
+        }
+        if (MaxDistBtwPl_X_EventsInDay != null ? !MaxDistBtwPl_X_EventsInDay.equals(that.MaxDistBtwPl_X_EventsInDay) : that.MaxDistBtwPl_X_EventsInDay != null) {
+            ret.append("MaxDistBtwPl_X_EventsInDay ").append(MaxDistBtwPl_X_EventsInDay).append(" != ").append(that.MaxDistBtwPl_X_EventsInDay).append(" ");
+        }
+        if (MinDistBtwPl_X_EventsInDay != null ? !MinDistBtwPl_X_EventsInDay.equals(that.MinDistBtwPl_X_EventsInDay) : that.MinDistBtwPl_X_EventsInDay != null) {
+            ret.append("MinDistBtwPl_X_EventsInDay ").append(MinDistBtwPl_X_EventsInDay).append(" != ").append(that.MinDistBtwPl_X_EventsInDay).append(" ");
+        }
+        if (AvgDistBtwEventIncdntInDay != null ? !AvgDistBtwEventIncdntInDay.equals(that.AvgDistBtwEventIncdntInDay) : that.AvgDistBtwEventIncdntInDay != null) {
+            ret.append("AvgDistBtwEventIncdntInDay ").append(AvgDistBtwEventIncdntInDay).append(" != ").append(that.AvgDistBtwEventIncdntInDay).append(" ");
+        }
+        if (MaxDistBtwEventIncdntInDay != null ? !MaxDistBtwEventIncdntInDay.equals(that.MaxDistBtwEventIncdntInDay) : that.MaxDistBtwEventIncdntInDay != null) {
+            ret.append("MaxDistBtwEventIncdntInDay ").append(MaxDistBtwEventIncdntInDay).append(" != ").append(that.MaxDistBtwEventIncdntInDay).append(" ");
+        }
+        if (MinDistBtwEventIncdntInDay != null ? !MinDistBtwEventIncdntInDay.equals(that.MinDistBtwEventIncdntInDay) : that.MinDistBtwEventIncdntInDay != null) {
+            ret.append("MinDistBtwEventIncdntInDay ").append(MinDistBtwEventIncdntInDay).append(" != ").append(that.MinDistBtwEventIncdntInDay).append(" ");
+        }
+        if (AvgTimeBtwEventIncdntInDay != null ? !AvgTimeBtwEventIncdntInDay.equals(that.AvgTimeBtwEventIncdntInDay) : that.AvgTimeBtwEventIncdntInDay != null) {
+            ret.append("AvgTimeBtwEventIncdntInDay ").append(AvgTimeBtwEventIncdntInDay).append(" != ").append(that.AvgTimeBtwEventIncdntInDay).append(" ");
+        }
+        if (MaxTimeBtwEventIncdntInDay != null ? !MaxTimeBtwEventIncdntInDay.equals(that.MaxTimeBtwEventIncdntInDay) : that.MaxTimeBtwEventIncdntInDay != null) {
+            ret.append("MaxTimeBtwEventIncdntInDay ").append(MaxTimeBtwEventIncdntInDay).append(" != ").append(that.MaxTimeBtwEventIncdntInDay).append(" ");
+        }
+        if (MinTimeBtwEventIncdntInDay != null ? !MinTimeBtwEventIncdntInDay.equals(that.MinTimeBtwEventIncdntInDay) : that.MinTimeBtwEventIncdntInDay != null) {
+            ret.append("MinTimeBtwEventIncdntInDay ").append(MinTimeBtwEventIncdntInDay).append(" != ").append(that.MinTimeBtwEventIncdntInDay).append(" ");
+        }
+        if (velocity_var != null ? !velocity_var.equals(that.velocity_var) : that.velocity_var != null) {
+            ret.append("velocity_var ").append(velocity_var).append(" != ").append(that.velocity_var).append(" ");
+        }
+        if (GMAX_VAR != null ? !GMAX_VAR.equals(that.GMAX_VAR) : that.GMAX_VAR != null) {
+            ret.append("GMAX_VAR ").append(GMAX_VAR).append(" != ").append(that.GMAX_VAR).append(" ");
+        }
+        return ret.toString();
     }
 }
