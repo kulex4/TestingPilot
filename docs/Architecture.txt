@@ -8,4 +8,8 @@ Main flow of application:
 1.2. parse each row into model class;
 1.3. save each model class to corresponding table in database;
 2. compare actual and expected:
-2.1. read
+2.1. read actual list from db;
+2.2. read expected list from db;
+2.3. compare objects by id first, then by all other object properties;
+2.4. push all differences and equals in array list (each row == one list element);
+2.5. print result in report file from list;
