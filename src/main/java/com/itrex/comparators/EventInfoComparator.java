@@ -7,7 +7,9 @@ import com.itrex.service.eventinfo.EventInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by ITRex-User on 3/21/2016.
@@ -21,7 +23,8 @@ public class EventInfoComparator implements EventComparator {
     @Autowired
     private EventInfoExpectedService eventInfoExpectedService;
 
-    public void compare() {
+    public List<String> compare() {
+        List<String> reportRows = new ArrayList<>();
         Iterable<EventInfo> eventInfos = eventInfoService.findAllByOrderByIdAsc();
         Iterable<EventInfoExpected> eventInfoExpecteds = eventInfoExpectedService.findAllByOrderByIdAsc();
 
@@ -33,13 +36,14 @@ public class EventInfoComparator implements EventComparator {
             EventInfo curEventInfo = eventInfoIterator.next();
             while (true) {
                 if (curEventInfoExpected.getId().equals(curEventInfo.getId())) {
-                    //// TODO: тут проверка свойств объектов
                     String str = curEventInfoExpected.getNotEqualsString(curEventInfo);
+                    String row;
                     if (str.length() > 0) {
-                        System.out.println(curEventInfoExpected.getId()+ " " + str);
+                        row = "Not the same objects with id=" + curEventInfoExpected.getId() + ", difference: " + str;
                     } else {
-                        System.out.println(curEventInfoExpected.getId() + " = " + curEventInfo.getId());
+                        row = "Actual list contains same EventByDay as in expected list, id=" + curEventInfoExpected.getId();
                     }
+                    reportRows.add(row);
                     if (eventInfoIterator.hasNext() && eventInfoExpentedIterator.hasNext()) {
                         curEventInfo = eventInfoIterator.next();
                         curEventInfoExpected = eventInfoExpentedIterator.next();
@@ -47,16 +51,14 @@ public class EventInfoComparator implements EventComparator {
                         break;
                     }
                 } else if (curEventInfoExpected.getId().compareTo(curEventInfo.getId()) < 0) {
-                    //// TODO: тут выводим что у нас в Actual нету такого объекта и берем next Expected
-                    System.out.println(curEventInfoExpected.getId() + " < " + curEventInfo.getId());
+                    reportRows.add("There is no EventByDay with id=" + curEventInfoExpected.getId() + " in actual list");
                     if (eventInfoIterator.hasNext()) {
                         curEventInfoExpected = eventInfoExpentedIterator.next();
                     } else {
                         break;
                     }
                 } else {
-                    //// TODO: тут выводим что у нас в Expected нету такого объекта и берем next Actual
-                    System.out.println(curEventInfoExpected.getId() + " > " + curEventInfo.getId());
+                    reportRows.add("There is no EventByDay with id=" + curEventInfo.getId() + " in expected list");
                     if (eventInfoIterator.hasNext()) {
                         curEventInfo = eventInfoIterator.next();
                     } else {
@@ -65,5 +67,6 @@ public class EventInfoComparator implements EventComparator {
                 }
             }
         }
+        return reportRows;
     }
 }
