@@ -14,3 +14,19 @@ Installation instructions:
 4. Go to "target" folder and you will see nikolay.zip file. Unpack it.
 5. Type "java -jar nikolai.jar" in the unpacked folder.
 6. After that you will see new report txt files with names 'eventInfoReport.txt' and 'eventByDay.txt'.
+
+
+Proper project files structure:
+
+nikolay\
+    docs\
+        Architecture.txt
+        Install.txt
+        Readme.txt
+    files\
+        even_info.csv
+        even_info_expected.csv
+        event_by_day.csv
+        event_by_day_expected.csv
+    application.properties
+    nikolay.jar
