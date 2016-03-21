@@ -1,10 +1,12 @@
 package com.itrex.utils;
 
+import com.google.common.base.Joiner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,9 @@ import java.util.List;
 @Component
 public class FileHelper {
 
-    @Value("#{application['filesDirName'] ?: 'files'}")
+    private static final Logger log = LoggerFactory.getLogger(FileHelper.class);
+
+    @Value("${filesDirName} ?: 'files'}")
     private String filesDirName;
 
 
@@ -45,4 +49,26 @@ public class FileHelper {
     public String[] readCSVFileNames(){
         return readCSVFileNames(filesDirName);
     }
+
+    public static void writeToFile(String fileName, List<String> listToWrite){
+        BufferedWriter out = null;
+        try {
+            FileWriter fstream = new FileWriter(fileName, false);
+            out = new BufferedWriter(fstream);
+            out.write(Joiner.on("\t").join(listToWrite));
+        }
+        catch (IOException e) {
+            log.error("Error: " + e.getMessage());
+        }
+        finally {
+            if(out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    log.error("Error: " + e.getMessage());
+                }
+            }
+        }
+    }
+
 }
