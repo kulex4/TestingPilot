@@ -24,15 +24,9 @@ public class EventsRouterBean {
     public void chooseParserByFilePath(String filePath) {
         if (filePath.contains(INFO_EVENTS_FLAG)) {
             if (filePath.contains(EXPECTED_FLAG)) {
-                eventInfoParser.parseAndSaveEventsFromCsvFile(filePath);
+//                eventInfoParser.parseAndSaveEventsFromCsvFile(filePath);
             } else {
                 eventInfoParser.parseAndSaveEventsFromCsvFile(filePath);
-            }
-        } else if (filePath.contains(BY_DAY_EVENTS_FLAG)) {
-            if (filePath.contains(EXPECTED_FLAG)) {
-                eventByDayParser.parseAndSaveEventsFromCsvFile(filePath);
-            } else {
-                eventByDayParser.parseAndSaveEventsFromCsvFile(filePath);
             }
         }
     }

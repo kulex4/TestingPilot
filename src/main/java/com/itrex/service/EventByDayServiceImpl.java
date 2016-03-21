@@ -32,7 +32,7 @@ public class EventByDayServiceImpl implements EventByDayService {
     }
 
     @Override
-    public Iterable<EventByDay> findAllEventByDays() {
-        return eventByDayRepository.findAll();
+    public Iterable<EventByDay> findAllByOrderByIdAsc() {
+        return eventByDayRepository.findAllByOrderByIdAsc();
     }
 }

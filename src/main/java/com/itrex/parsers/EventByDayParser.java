@@ -25,7 +25,7 @@ public class EventByDayParser extends AbstractEventParser<EventByDay> {
     @Override
     public EventByDay parseLine(String[] line) {
         EventByDay eventByDay = new EventByDay();
-        eventByDay.setDy_id(Integer.parseInt(line[0]));
+        eventByDay.setId(Integer.parseInt(line[0]));
         eventByDay.setTimeBtwFstLstEventOfDay(getDoubleValue(line[1]));
         eventByDay.setTSL_EventOfDay(getDoubleValue(line[2]));
         eventByDay.setTSF_EventOfDay(getDoubleValue(line[3]));

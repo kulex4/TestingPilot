@@ -32,8 +32,8 @@ public class EventInfoServiceImpl implements EventInfoService {
     }
 
     @Override
-    public Iterable<EventInfo> findAllEventInfos() {
-        return eventInfoRepository.findAll();
+    public Iterable<EventInfo> findAllByOrderByIdAsc() {
+        return eventInfoRepository.findAllByOrderByIdAsc();
     }
 
 }

@@ -8,5 +8,5 @@ import com.itrex.model.EventByDay;
 public interface EventByDayService {
     void insert(EventByDay eventByDay);
     void remove(EventByDay eventByDay);
-    Iterable<EventByDay> findAllEventByDays();
+    Iterable<EventByDay> findAllByOrderByIdAsc();
 }

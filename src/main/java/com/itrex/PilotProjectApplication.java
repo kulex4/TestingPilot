@@ -1,5 +1,6 @@
 package com.itrex;
 
+import com.itrex.utils.ComparatorBean;
 import com.itrex.utils.EventsRouterBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,9 @@ public class PilotProjectApplication implements CommandLineRunner {
     @Autowired
     private EventsRouterBean eventsRouterBean;
 
+    @Autowired
+    private ComparatorBean comparatorBean;
+
 	public static void main(String[] args) {
 		SpringApplication.run(PilotProjectApplication.class, args);
 	}
@@ -26,12 +30,6 @@ public class PilotProjectApplication implements CommandLineRunner {
     @Override
     @Value("${config.path.actualOutput.evenInfo},${config.path.actualOutput.evenByDay},${config.path.expectedOutput.evenInfoExpected},${config.path.expectedOutput.evenByDayExpected}")
     public void run(String... args) throws Exception {
-        if (args.length < 4) {
-            log.info("Not all arguments are listed");
-        } else {
-            for (String filePath : args) {
-                eventsRouterBean.chooseParserByFilePath(filePath);
-            }
-        }
+        comparatorBean.compare();
     }
 }

@@ -11,7 +11,7 @@ public class EventByDay {
 
     @Id
     @Column(name = "dy_id")
-    private int dy_id;
+    private int id;
 
     @Column(name = "TimeBtwFstLstEventOfDay")
     private Double TimeBtwFstLstEventOfDay;
@@ -64,12 +64,12 @@ public class EventByDay {
     @Column(name = "GMAX_VAR")
     private Double GMAX_VAR;
 
-    public int getDy_id() {
-        return dy_id;
+    public int getId() {
+        return id;
     }
 
-    public void setDy_id(int dy_id) {
-        this.dy_id = dy_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getTimeBtwFstLstEventOfDay() {
@@ -215,7 +215,7 @@ public class EventByDay {
 
         EventByDay that = (EventByDay) o;
 
-        if (dy_id != that.dy_id) return false;
+        if (id != that.id) return false;
         if (Double.compare(that.TimeBtwFstLstEventOfDay, TimeBtwFstLstEventOfDay) != 0) return false;
         if (Double.compare(that.TSL_EventOfDay, TSL_EventOfDay) != 0) return false;
         if (Double.compare(that.TSF_EventOfDay, TSF_EventOfDay) != 0) return false;
@@ -240,7 +240,7 @@ public class EventByDay {
     public int hashCode() {
         int result;
         long temp;
-        result = dy_id;
+        result = id;
         temp = Double.doubleToLongBits(TimeBtwFstLstEventOfDay);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(TSL_EventOfDay);
@@ -281,7 +281,7 @@ public class EventByDay {
     @Override
     public String toString() {
         return "EventByDay{" +
-                "dy_id=" + dy_id +
+                "dy_id=" + id +
                 ", TimeBtwFstLstEventOfDay=" + TimeBtwFstLstEventOfDay +
                 ", TSL_EventOfDay=" + TSL_EventOfDay +
                 ", TSF_EventOfDay=" + TSF_EventOfDay +

@@ -8,5 +8,5 @@ import com.itrex.model.EventInfo;
 public interface EventInfoService {
     void insert(EventInfo eventInfo);
     void remove(EventInfo eventInfo);
-    Iterable<EventInfo> findAllEventInfos();
+    Iterable<EventInfo> findAllByOrderByIdAsc();
 }
