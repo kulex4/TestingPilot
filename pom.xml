@@ -73,9 +73,9 @@
                             <Class-Path>.</Class-Path>
                         </manifestEntries>
                     </archive>
-                    <excludes>
+                    <!--<excludes>
                         <exclude>application.properties</exclude>
-                    </excludes>
+                    </excludes>-->
                 </configuration>
             </plugin>
             <plugin>
