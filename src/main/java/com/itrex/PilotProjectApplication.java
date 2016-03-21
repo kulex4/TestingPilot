@@ -46,8 +46,10 @@ public class PilotProjectApplication implements CommandLineRunner {
         }
         System.out.println("Compare EventInfo objects");
         List<String> eventInfoRows = eventInfoComparator.compare();
+        FileHelper.writeToFile("../eventInfoReport.txt", eventInfoRows);
 
         System.out.println("Compare EventByDay objects");
         List<String> eventByDayRows = eventByDayComparator.compare();
+        FileHelper.writeToFile("../eventByDay.txt", eventInfoRows);
     }
 }
