@@ -4,8 +4,6 @@ import com.itrex.model.eventinfo.EventInfo;
 import com.itrex.model.eventinfo.EventInfoExpected;
 import com.itrex.service.eventinfo.EventInfoExpectedService;
 import com.itrex.service.eventinfo.EventInfoService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +13,7 @@ import java.util.Iterator;
  * Created by ITRex-User on 3/21/2016.
  */
 @Component
-public class EventInfoComparator {
+public class EventInfoComparator implements EventComparator {
 
     @Autowired
     private EventInfoService eventInfoService;
@@ -38,7 +36,7 @@ public class EventInfoComparator {
                     //// TODO: тут проверка свойств объектов
                     String str = curEventInfoExpected.getNotEqualsString(curEventInfo);
                     if (str.length() > 0) {
-                        System.out.println(str);
+                        System.out.println(curEventInfoExpected.getId()+ " " + str);
                     } else {
                         System.out.println(curEventInfoExpected.getId() + " = " + curEventInfo.getId());
                     }

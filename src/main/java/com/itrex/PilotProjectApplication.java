@@ -1,5 +1,6 @@
 package com.itrex;
 
+import com.itrex.comparators.EventByDayComparator;
 import com.itrex.comparators.EventInfoComparator;
 import com.itrex.utils.EventsRouterBean;
 import com.itrex.utils.FileHelper;
@@ -26,6 +27,9 @@ public class PilotProjectApplication implements CommandLineRunner {
     @Autowired
     private FileHelper fileHelper;
 
+    @Autowired
+    private EventByDayComparator eventByDayComparator;
+
 	public static void main(String[] args) {
 		SpringApplication.run(PilotProjectApplication.class, args);
 	}
@@ -38,6 +42,10 @@ public class PilotProjectApplication implements CommandLineRunner {
         for (String filePath : args) {
             eventsRouterBean.chooseParserByFilePath(filePath);
         }
+        System.out.println("Compare EventInfo objects: ");
         eventInfoComparator.compare();
+
+        System.out.println("Compare EventByDay objects: ");
+        eventByDayComparator.compare();
     }
 }
