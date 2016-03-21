@@ -1,4 +1,6 @@
-package com.itrex.model;
+package com.itrex.model.eventinfo;
+
+import com.itrex.model.NotEqualsString;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -9,7 +11,8 @@ import java.util.Date;
  * Created by ITRex-User on 3/21/2016.
  */
 @MappedSuperclass
-public class EventInfoAbs implements NotEqualsString<EventInfoAbs> {
+public class AbstractEventInfo implements NotEqualsString<AbstractEventInfo> {
+
     @Id
     @Column(name = "id")
     private String id;
@@ -126,7 +129,7 @@ public class EventInfoAbs implements NotEqualsString<EventInfoAbs> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EventInfoAbs that = (EventInfoAbs) o;
+        AbstractEventInfo that = (AbstractEventInfo) o;
 
         if (WeekEnd_v1 != that.WeekEnd_v1) return false;
         if (WeekEnd_v2 != that.WeekEnd_v2) return false;
@@ -173,7 +176,7 @@ public class EventInfoAbs implements NotEqualsString<EventInfoAbs> {
     }
 
     @Override
-    public String getNotEqualsString(EventInfoAbs that) {
+    public String getNotEqualsString(AbstractEventInfo that) {
         StringBuilder ret = new StringBuilder();
         if (WeekEnd_v1 != that.WeekEnd_v1){
             ret.append("WeekEnd_v1 ").append(WeekEnd_v1).append(" != ").append(that.WeekEnd_v1).append(" ");

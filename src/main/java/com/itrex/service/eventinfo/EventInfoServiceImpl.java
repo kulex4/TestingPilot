@@ -1,6 +1,6 @@
-package com.itrex.service;
+package com.itrex.service.eventinfo;
 
-import com.itrex.model.EventInfo;
+import com.itrex.model.eventinfo.EventInfo;
 import com.itrex.repository.EventInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

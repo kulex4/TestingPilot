@@ -5,7 +5,7 @@
 
 	<groupId>com.itrex</groupId>
 	<artifactId>pilot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>PilotProject</name>
@@ -55,6 +55,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 
 </project>

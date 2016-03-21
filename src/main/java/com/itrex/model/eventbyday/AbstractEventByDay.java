@@ -1,13 +1,17 @@
-package com.itrex.model;
+package com.itrex.model.eventbyday;
 
-import javax.persistence.*;
+import com.itrex.model.eventinfo.AbstractEventInfo;
+import com.itrex.model.NotEqualsString;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Author: nikolai.pashkevich.
  */
-@Entity
-@Table(name = "event_by_day")
-public class EventByDay {
+@MappedSuperclass
+public class AbstractEventByDay implements NotEqualsString<AbstractEventInfo> {
 
     @Id
     @Column(name = "dy_id")
@@ -213,75 +217,71 @@ public class EventByDay {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EventByDay that = (EventByDay) o;
+        AbstractEventByDay that = (AbstractEventByDay) o;
 
         if (id != that.id) return false;
-        if (Double.compare(that.TimeBtwFstLstEventOfDay, TimeBtwFstLstEventOfDay) != 0) return false;
-        if (Double.compare(that.TSL_EventOfDay, TSL_EventOfDay) != 0) return false;
-        if (Double.compare(that.TSF_EventOfDay, TSF_EventOfDay) != 0) return false;
-        if (Double.compare(that.AvgDistBtwPlEventsInDay, AvgDistBtwPlEventsInDay) != 0) return false;
-        if (Double.compare(that.MaxDistBtwPlEventsInDay, MaxDistBtwPlEventsInDay) != 0) return false;
-        if (Double.compare(that.MinDistBtwPlEventsInDay, MinDistBtwPlEventsInDay) != 0) return false;
-        if (Double.compare(that.AvgDistBtwPl_X_EventsInDay, AvgDistBtwPl_X_EventsInDay) != 0) return false;
-        if (Double.compare(that.MaxDistBtwPl_X_EventsInDay, MaxDistBtwPl_X_EventsInDay) != 0) return false;
-        if (Double.compare(that.MinDistBtwPl_X_EventsInDay, MinDistBtwPl_X_EventsInDay) != 0) return false;
-        if (Double.compare(that.AvgDistBtwEventIncdntInDay, AvgDistBtwEventIncdntInDay) != 0) return false;
-        if (Double.compare(that.MaxDistBtwEventIncdntInDay, MaxDistBtwEventIncdntInDay) != 0) return false;
-        if (Double.compare(that.MinDistBtwEventIncdntInDay, MinDistBtwEventIncdntInDay) != 0) return false;
-        if (Double.compare(that.AvgTimeBtwEventIncdntInDay, AvgTimeBtwEventIncdntInDay) != 0) return false;
-        if (Double.compare(that.MaxTimeBtwEventIncdntInDay, MaxTimeBtwEventIncdntInDay) != 0) return false;
-        if (Double.compare(that.MinTimeBtwEventIncdntInDay, MinTimeBtwEventIncdntInDay) != 0) return false;
-        if (Double.compare(that.velocity_var, velocity_var) != 0) return false;
-        return Double.compare(that.GMAX_VAR, GMAX_VAR) == 0;
+        if (TimeBtwFstLstEventOfDay != null ? !TimeBtwFstLstEventOfDay.equals(that.TimeBtwFstLstEventOfDay) : that.TimeBtwFstLstEventOfDay != null)
+            return false;
+        if (TSL_EventOfDay != null ? !TSL_EventOfDay.equals(that.TSL_EventOfDay) : that.TSL_EventOfDay != null)
+            return false;
+        if (TSF_EventOfDay != null ? !TSF_EventOfDay.equals(that.TSF_EventOfDay) : that.TSF_EventOfDay != null)
+            return false;
+        if (AvgDistBtwPlEventsInDay != null ? !AvgDistBtwPlEventsInDay.equals(that.AvgDistBtwPlEventsInDay) : that.AvgDistBtwPlEventsInDay != null)
+            return false;
+        if (MaxDistBtwPlEventsInDay != null ? !MaxDistBtwPlEventsInDay.equals(that.MaxDistBtwPlEventsInDay) : that.MaxDistBtwPlEventsInDay != null)
+            return false;
+        if (MinDistBtwPlEventsInDay != null ? !MinDistBtwPlEventsInDay.equals(that.MinDistBtwPlEventsInDay) : that.MinDistBtwPlEventsInDay != null)
+            return false;
+        if (AvgDistBtwPl_X_EventsInDay != null ? !AvgDistBtwPl_X_EventsInDay.equals(that.AvgDistBtwPl_X_EventsInDay) : that.AvgDistBtwPl_X_EventsInDay != null)
+            return false;
+        if (MaxDistBtwPl_X_EventsInDay != null ? !MaxDistBtwPl_X_EventsInDay.equals(that.MaxDistBtwPl_X_EventsInDay) : that.MaxDistBtwPl_X_EventsInDay != null)
+            return false;
+        if (MinDistBtwPl_X_EventsInDay != null ? !MinDistBtwPl_X_EventsInDay.equals(that.MinDistBtwPl_X_EventsInDay) : that.MinDistBtwPl_X_EventsInDay != null)
+            return false;
+        if (AvgDistBtwEventIncdntInDay != null ? !AvgDistBtwEventIncdntInDay.equals(that.AvgDistBtwEventIncdntInDay) : that.AvgDistBtwEventIncdntInDay != null)
+            return false;
+        if (MaxDistBtwEventIncdntInDay != null ? !MaxDistBtwEventIncdntInDay.equals(that.MaxDistBtwEventIncdntInDay) : that.MaxDistBtwEventIncdntInDay != null)
+            return false;
+        if (MinDistBtwEventIncdntInDay != null ? !MinDistBtwEventIncdntInDay.equals(that.MinDistBtwEventIncdntInDay) : that.MinDistBtwEventIncdntInDay != null)
+            return false;
+        if (AvgTimeBtwEventIncdntInDay != null ? !AvgTimeBtwEventIncdntInDay.equals(that.AvgTimeBtwEventIncdntInDay) : that.AvgTimeBtwEventIncdntInDay != null)
+            return false;
+        if (MaxTimeBtwEventIncdntInDay != null ? !MaxTimeBtwEventIncdntInDay.equals(that.MaxTimeBtwEventIncdntInDay) : that.MaxTimeBtwEventIncdntInDay != null)
+            return false;
+        if (MinTimeBtwEventIncdntInDay != null ? !MinTimeBtwEventIncdntInDay.equals(that.MinTimeBtwEventIncdntInDay) : that.MinTimeBtwEventIncdntInDay != null)
+            return false;
+        if (velocity_var != null ? !velocity_var.equals(that.velocity_var) : that.velocity_var != null) return false;
+        return GMAX_VAR != null ? GMAX_VAR.equals(that.GMAX_VAR) : that.GMAX_VAR == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        temp = Double.doubleToLongBits(TimeBtwFstLstEventOfDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(TSL_EventOfDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(TSF_EventOfDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(AvgDistBtwPlEventsInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MaxDistBtwPlEventsInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MinDistBtwPlEventsInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(AvgDistBtwPl_X_EventsInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MaxDistBtwPl_X_EventsInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MinDistBtwPl_X_EventsInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(AvgDistBtwEventIncdntInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MaxDistBtwEventIncdntInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MinDistBtwEventIncdntInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(AvgTimeBtwEventIncdntInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MaxTimeBtwEventIncdntInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(MinTimeBtwEventIncdntInDay);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(velocity_var);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(GMAX_VAR);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        int result = id;
+        result = 31 * result + (TimeBtwFstLstEventOfDay != null ? TimeBtwFstLstEventOfDay.hashCode() : 0);
+        result = 31 * result + (TSL_EventOfDay != null ? TSL_EventOfDay.hashCode() : 0);
+        result = 31 * result + (TSF_EventOfDay != null ? TSF_EventOfDay.hashCode() : 0);
+        result = 31 * result + (AvgDistBtwPlEventsInDay != null ? AvgDistBtwPlEventsInDay.hashCode() : 0);
+        result = 31 * result + (MaxDistBtwPlEventsInDay != null ? MaxDistBtwPlEventsInDay.hashCode() : 0);
+        result = 31 * result + (MinDistBtwPlEventsInDay != null ? MinDistBtwPlEventsInDay.hashCode() : 0);
+        result = 31 * result + (AvgDistBtwPl_X_EventsInDay != null ? AvgDistBtwPl_X_EventsInDay.hashCode() : 0);
+        result = 31 * result + (MaxDistBtwPl_X_EventsInDay != null ? MaxDistBtwPl_X_EventsInDay.hashCode() : 0);
+        result = 31 * result + (MinDistBtwPl_X_EventsInDay != null ? MinDistBtwPl_X_EventsInDay.hashCode() : 0);
+        result = 31 * result + (AvgDistBtwEventIncdntInDay != null ? AvgDistBtwEventIncdntInDay.hashCode() : 0);
+        result = 31 * result + (MaxDistBtwEventIncdntInDay != null ? MaxDistBtwEventIncdntInDay.hashCode() : 0);
+        result = 31 * result + (MinDistBtwEventIncdntInDay != null ? MinDistBtwEventIncdntInDay.hashCode() : 0);
+        result = 31 * result + (AvgTimeBtwEventIncdntInDay != null ? AvgTimeBtwEventIncdntInDay.hashCode() : 0);
+        result = 31 * result + (MaxTimeBtwEventIncdntInDay != null ? MaxTimeBtwEventIncdntInDay.hashCode() : 0);
+        result = 31 * result + (MinTimeBtwEventIncdntInDay != null ? MinTimeBtwEventIncdntInDay.hashCode() : 0);
+        result = 31 * result + (velocity_var != null ? velocity_var.hashCode() : 0);
+        result = 31 * result + (GMAX_VAR != null ? GMAX_VAR.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "EventByDay{" +
-                "dy_id=" + id +
+        return "AbstractEventByDay{" +
+                "id=" + id +
                 ", TimeBtwFstLstEventOfDay=" + TimeBtwFstLstEventOfDay +
                 ", TSL_EventOfDay=" + TSL_EventOfDay +
                 ", TSF_EventOfDay=" + TSF_EventOfDay +
@@ -300,5 +300,10 @@ public class EventByDay {
                 ", velocity_var=" + velocity_var +
                 ", GMAX_VAR=" + GMAX_VAR +
                 '}';
+    }
+
+    @Override
+    public String getNotEqualsString(AbstractEventInfo obj) {
+        return null;
     }
 }

@@ -1,6 +1,6 @@
-package com.itrex.service;
+package com.itrex.service.eventbyday;
 
-import com.itrex.model.EventByDay;
+import com.itrex.model.eventbyday.EventByDay;
 import com.itrex.repository.EventByDayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

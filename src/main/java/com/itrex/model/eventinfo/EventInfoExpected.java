@@ -1,4 +1,4 @@
-package com.itrex.model;
+package com.itrex.model.eventinfo;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -8,5 +8,5 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "event_info_expected")
-public class EventInfoExpented extends EventInfoAbs {
+public class EventInfoExpected extends AbstractEventInfo {
 }

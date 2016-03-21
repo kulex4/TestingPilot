@@ -1,11 +1,10 @@
 package com.itrex;
 
-import com.itrex.utils.ComparatorBean;
+import com.itrex.comparators.EventInfoComparator;
 import com.itrex.utils.EventsRouterBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,15 +20,17 @@ public class PilotProjectApplication implements CommandLineRunner {
     private EventsRouterBean eventsRouterBean;
 
     @Autowired
-    private ComparatorBean comparatorBean;
+    private EventInfoComparator eventInfoComparator;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PilotProjectApplication.class, args);
 	}
 
     @Override
-    @Value("${config.path.actualOutput.evenInfo},${config.path.actualOutput.evenByDay},${config.path.expectedOutput.evenInfoExpected},${config.path.expectedOutput.evenByDayExpected}")
     public void run(String... args) throws Exception {
-        comparatorBean.compare();
+        for (String filePath : args) {
+            eventsRouterBean.chooseParserByFilePath(filePath);
+        }
+        eventInfoComparator.compare();
     }
 }

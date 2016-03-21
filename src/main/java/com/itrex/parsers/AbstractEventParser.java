@@ -1,5 +1,6 @@
 package com.itrex.parsers;
 
+import com.itrex.service.EventInfoCommonService;
 import com.opencsv.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,9 +16,9 @@ import java.util.List;
  */
 public abstract class AbstractEventParser<T> implements EventParser<T> {
 
-    public static final Logger log = LoggerFactory.getLogger(EventInfoParser.class);
+    static final Logger log = LoggerFactory.getLogger(EventInfoParser.class);
 
-    public List<T> readAndParseCsvFile(String filePath) {
+    List<T> readAndParseCsvFile(String filePath) {
         List<T> events = new ArrayList<>();
         CSVReader reader = null;
         try {
@@ -41,6 +42,13 @@ public abstract class AbstractEventParser<T> implements EventParser<T> {
             e.printStackTrace();
         }
         return events;
+    }
+
+    void saveEventsInDatabase(List<T> events, EventInfoCommonService<T> service) {
+        for (T t : events) {
+            service.insert(t);
+        }
+        log.info("Parsed and saved " + events.size() + " " + getClass() + " objects");
     }
 
     public abstract T parseLine(String[] line);

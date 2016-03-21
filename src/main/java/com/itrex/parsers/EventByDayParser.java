@@ -1,7 +1,7 @@
 package com.itrex.parsers;
 
-import com.itrex.model.EventByDay;
-import com.itrex.service.EventByDayService;
+import com.itrex.model.eventbyday.EventByDay;
+import com.itrex.service.eventbyday.EventByDayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ public class EventByDayParser extends AbstractEventParser<EventByDay> {
     @Override
     public void parseAndSaveEventsFromCsvFile(String filePath) {
         List<EventByDay> eventByDaysList = readAndParseCsvFile(filePath);
-        saveEventsInDatabase(eventByDaysList);
+        saveEventsInDatabase(eventByDaysList, eventByDayService);
     }
 
     @Override
@@ -44,13 +44,6 @@ public class EventByDayParser extends AbstractEventParser<EventByDay> {
         eventByDay.setVelocity_var(getDoubleValue(line[16]));
         eventByDay.setGMAX_VAR(getDoubleValue(line[17]));
         return eventByDay;
-    }
-
-    @Override
-    public void saveEventsInDatabase(List<EventByDay> events) {
-        for (EventByDay eventByDay : events) {
-            eventByDayService.insert(eventByDay);
-        }
     }
 
     private Double getDoubleValue(String str) {

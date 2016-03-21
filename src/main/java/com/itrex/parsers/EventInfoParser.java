@@ -1,7 +1,7 @@
 package com.itrex.parsers;
 
-import com.itrex.model.EventInfo;
-import com.itrex.service.EventInfoService;
+import com.itrex.model.eventinfo.EventInfo;
+import com.itrex.service.eventinfo.EventInfoService;
 import com.itrex.utils.DateFormatHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,12 +19,12 @@ public class EventInfoParser extends AbstractEventParser<EventInfo> {
     @Autowired
     private EventInfoService eventInfoService;
 
-    public SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyy:HH:mm:ss", DateFormatHelper.getDateFormatSymbols());
+    private SimpleDateFormat formatter = new SimpleDateFormat("ddMMMyy:HH:mm:ss", DateFormatHelper.getDateFormatSymbols());
 
     @Override
     public void parseAndSaveEventsFromCsvFile(String filePath) {
         List<EventInfo> eventInfoList = readAndParseCsvFile(filePath);
-        saveEventsInDatabase(eventInfoList);
+        saveEventsInDatabase(eventInfoList, eventInfoService);
     }
 
     @Override
@@ -46,12 +46,5 @@ public class EventInfoParser extends AbstractEventParser<EventInfo> {
         eventInfo.setHoliday_indicator_2("1".equals(line[8]));
         eventInfo.setDailyEventCountType_ALL(Integer.parseInt(line[9]));
         return eventInfo;
-    }
-
-    @Override
-    public void saveEventsInDatabase(List<EventInfo> events) {
-        for (EventInfo eventInfo : events) {
-            eventInfoService.insert(eventInfo);
-        }
     }
 }
