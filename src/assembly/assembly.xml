@@ -7,7 +7,7 @@
         <format>zip</format>
     </formats>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>/</baseDirectory>
+    <baseDirectory>/${jar.name}</baseDirectory>
     <fileSets>
         <fileSet>
             <!--Get the generated application jar-->
