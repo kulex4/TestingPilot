@@ -54,13 +54,13 @@
 	</dependencies>
 	
 	<build>
-      <!--  <finalName>${jar.name}</finalName>-->
+        <finalName>${jar.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-           <!-- <plugin>
+            <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
@@ -70,41 +70,18 @@
                         </manifest>
                         <manifestEntries>
                             <Built-By>ITRexGroup</Built-By>
-                            <Class-Path>./conf/</Class-Path>
+                            <Class-Path>.</Class-Path>
                         </manifestEntries>
                     </archive>
                     <excludes>
                         <exclude>application.properties</exclude>
                     </excludes>
                 </configuration>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.6</version>
                 <executions>
-                    <execution>
-                        <id>jar-with-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <archive>
-                                <manifest>
-                                    <mainClass>com.itrex.PilotProjectApplication</mainClass>
-                                </manifest>
-                                <manifestEntries>
-                                    <Built-By>ITRexGroup</Built-By>
-                                    <Class-Path>.</Class-Path>
-                                </manifestEntries>
-                            </archive>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>${jar.name}</finalName>
-                        </configuration>
-                    </execution>
                     <execution>
                         <id>dist</id>
                         <phase>package</phase>
