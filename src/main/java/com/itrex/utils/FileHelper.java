@@ -1,6 +1,7 @@
 package com.itrex.utils;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -10,9 +11,10 @@ import java.util.List;
 /**
  * Author: nikolai.pashkevich.
  */
+@Component
 public class FileHelper {
 
-    @Value("#{config['filesDirName'] ?: 'files'}")
+    @Value("#{application['filesDirName'] ?: 'files'}")
     private String filesDirName;
 
 
