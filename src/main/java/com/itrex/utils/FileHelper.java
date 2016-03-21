@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 public class FileHelper {
 
-    @Value("#{application['filesDirName'] ?: 'files'}")
+    @Value("${filesDirName} ?: 'files'}")
     private String filesDirName;
 
 

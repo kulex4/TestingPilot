@@ -2,7 +2,7 @@ Installation instructions:
 
 1. Create schema in MySQL named 'pilot' with default parameters, and set it as default schema;
 
-2. Import SQL script file 'pilot-tables' from zip-archive in MySQL;
+2. Import SQL script file 'pilot-tables.sql' from zip-archive in MySQL;
 
 3. To build a JavaPilotProject, open your console, change to your project folder where pom.xml file is placed,
 and issue this command: 'mvn clean install';

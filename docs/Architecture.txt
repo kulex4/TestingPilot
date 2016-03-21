@@ -1,2 +1,8 @@
-Project Architeture.
+Project Architecture.
+
+Main flow of application:
+1. read csv file with OpenCsv library;
+2. parse each row into model class;
+3. save each model class to corresponding table in database;
+4. read
 
