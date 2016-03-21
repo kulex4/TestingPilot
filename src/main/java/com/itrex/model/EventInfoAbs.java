@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by ITRex-User on 3/21/2016.
  */
 @MappedSuperclass
-public class EventInfoAbs {
+public class EventInfoAbs implements NotEqualsString<EventInfoAbs> {
     @Id
     @Column(name = "id")
     private String id;
@@ -170,5 +170,38 @@ public class EventInfoAbs {
                 ", holiday_indicator_2=" + holiday_indicator_2 +
                 ", DailyEventCountType_ALL=" + DailyEventCountType_ALL +
                 '}';
+    }
+
+    @Override
+    public String getNotEqualsString(EventInfoAbs that) {
+        StringBuilder ret = new StringBuilder();
+        if (WeekEnd_v1 != that.WeekEnd_v1){
+            ret.append("WeekEnd_v1 ").append(WeekEnd_v1).append(" != ").append(that.WeekEnd_v1).append(" ");
+        }
+        if (WeekEnd_v2 != that.WeekEnd_v2){
+            ret.append("WeekEnd_v2 ").append(WeekEnd_v2).append(" != ").append(that.WeekEnd_v2).append(" ");
+        }
+        if (holiday_indicator_1 != that.holiday_indicator_1){
+            ret.append("holiday_indicator_1 ").append(holiday_indicator_1).append(" != ").append(that.holiday_indicator_1).append(" ");
+        }
+        if (holiday_indicator_2 != that.holiday_indicator_2){
+            ret.append("holiday_indicator_2 ").append(holiday_indicator_2).append(" != ").append(that.holiday_indicator_2).append(" ");
+        }
+        if (DailyEventCountType_ALL != that.DailyEventCountType_ALL){
+            ret.append("DailyEventCountType_ALL ").append(DailyEventCountType_ALL).append(" != ").append(that.DailyEventCountType_ALL).append(" ");
+        }
+        if (block_group != null ? !block_group.equals(that.block_group) : that.block_group != null){
+            ret.append("block_group ").append(block_group).append(" != ").append(that.block_group).append(" ");
+        }
+        if (datetime_var != null ? !datetime_var.equals(that.datetime_var) : that.datetime_var != null){
+            ret.append("datetime_var ").append(datetime_var).append(" != ").append(that.datetime_var).append(" ");
+        }
+        if (event_type != null ? !event_type.equals(that.event_type) : that.event_type != null){
+            ret.append("event_type ").append(event_type).append(" != ").append(that.event_type).append(" ");
+        }
+        if(shift != null ? !shift.equals(that.shift) : that.shift != null){
+            ret.append("shift ").append(shift).append(" != ").append(that.shift).append(" ");
+        }
+        return ret.toString();
     }
 }

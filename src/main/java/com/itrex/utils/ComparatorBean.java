@@ -40,7 +40,12 @@ public class ComparatorBean {
             while (true){
                 if(curEventInfoExpented.getId().equals(curEventInfo.getId())){
                     //// TODO: тут проверка свойств объектов
-                    System.out.println(curEventInfoExpented.getId() + " = " + curEventInfo.getId());
+                    String str = curEventInfoExpented.getNotEqualsString(curEventInfo);
+                    if(str.length() > 0){
+                        System.out.println(str);
+                    } else {
+                        System.out.println(curEventInfoExpented.getId() + " = " + curEventInfo.getId());
+                    }
                     if(eventInfoIterator.hasNext() && eventInfoExpentedIterator.hasNext()){
                         curEventInfo = eventInfoIterator.next();
                         curEventInfoExpented = eventInfoExpentedIterator.next();
