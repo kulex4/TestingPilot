@@ -12,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.List;
+
 @SpringBootApplication
 @ComponentScan(basePackages = "com.itrex")
 public class PilotProjectApplication implements CommandLineRunner {
@@ -42,10 +44,10 @@ public class PilotProjectApplication implements CommandLineRunner {
         for (String filePath : args) {
             eventsRouterBean.chooseParserByFilePath(filePath);
         }
-        System.out.println("Compare EventInfo objects: ");
-        eventInfoComparator.compare();
+        System.out.println("Compare EventInfo objects");
+        List<String> eventInfoRows = eventInfoComparator.compare();
 
-        System.out.println("Compare EventByDay objects: ");
-        eventByDayComparator.compare();
+        System.out.println("Compare EventByDay objects");
+        List<String> eventByDayRows = eventByDayComparator.compare();
     }
 }

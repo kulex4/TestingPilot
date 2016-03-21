@@ -18,7 +18,7 @@ public class FileHelper {
     private String filesDirName;
 
 
-    public String[] readCSVFileNames(String rootDir){
+    private String[] readCSVFileNames(String rootDir) {
         List<String> files = new ArrayList<>();
 
         if(rootDir == null){

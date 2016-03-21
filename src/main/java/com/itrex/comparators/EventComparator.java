@@ -1,8 +1,10 @@
 package com.itrex.comparators;
 
+import java.util.List;
+
 /**
  * Author: nikolai.pashkevich.
  */
 public interface EventComparator {
-    void compare();
+    List<String> compare();
 }
