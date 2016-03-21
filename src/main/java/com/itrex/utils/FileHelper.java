@@ -55,7 +55,7 @@ public class FileHelper {
         try {
             FileWriter fstream = new FileWriter(fileName, false);
             out = new BufferedWriter(fstream);
-            out.write(Joiner.on("\t").join(listToWrite));
+            out.write(Joiner.on(System.lineSeparator()).join(listToWrite));
         }
         catch (IOException e) {
             log.error("Error: " + e.getMessage());
